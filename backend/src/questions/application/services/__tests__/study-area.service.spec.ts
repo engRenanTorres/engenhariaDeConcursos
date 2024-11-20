@@ -1,7 +1,7 @@
-import { StudyAreaService } from "./study-area.service";
-import { CreateStudyAreaDto } from "./dto/create-study-area.dto";
-import { DataBaseError } from "../common/errors/types/DatabaseError";
-import { UpdateStudyAreaDto } from "./dto/update-study-area.dto";
+import { StudyAreaService } from "../study-area.service";
+import { CreateStudyAreaDto } from "../../dto/create-study-area.dto";
+import { DataBaseError } from "../../../../common/errors/types/DatabaseError";
+import { UpdateStudyAreaDto } from "../../dto/update-study-area.dto";
 import { NotFoundException } from "@nestjs/common";
 
 describe("StudyAreaService", () => {

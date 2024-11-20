@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { StudyArea } from "../../study-area/entities/study-area.entity";
+import { StudyArea } from "../../domain/entities/study-area.entity";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateSubjectDto {

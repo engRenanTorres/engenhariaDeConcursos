@@ -1,5 +1,5 @@
-import { Question } from "../../questions/domain/entities/question.entity";
-import { StudyArea } from "../../study-area/entities/study-area.entity";
+import { Question } from "./question.entity";
+import { StudyArea } from "./study-area.entity";
 import {
   Column,
   Entity,

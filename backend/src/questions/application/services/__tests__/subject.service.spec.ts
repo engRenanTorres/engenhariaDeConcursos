@@ -1,10 +1,10 @@
-import { SubjectService } from "./subject.service";
-import { CreateSubjectDto } from "./dto/create-subject.dto";
-import { UpdateSubjectDto } from "./dto/update-subject.dto";
+import { SubjectService } from "../subject.service";
+import { CreateSubjectDto } from "../../dto/create-subject.dto";
+import { UpdateSubjectDto } from "../../dto/update-subject.dto";
 import { NotFoundException } from "@nestjs/common";
-import { DataBaseError } from "../common/errors/types/DatabaseError";
-import { StudyAreaService } from "../study-area/study-area.service";
-import { StudyArea } from "../study-area/entities/study-area.entity";
+import { DataBaseError } from "../../../../common/errors/types/DatabaseError";
+import { StudyAreaService } from "../study-area.service";
+import { StudyArea } from "../../../domain/entities/study-area.entity";
 
 describe("SubjectsService", () => {
   let service: SubjectService;

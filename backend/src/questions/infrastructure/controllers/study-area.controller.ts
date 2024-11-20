@@ -8,13 +8,13 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { StudyAreaService } from "./study-area.service";
-import { CreateStudyAreaDto } from "./dto/create-study-area.dto";
-import { UpdateStudyAreaDto } from "./dto/update-study-area.dto";
+import { StudyAreaService } from "../../application/services/study-area.service";
+import { CreateStudyAreaDto } from "../../application/dto/create-study-area.dto";
+import { UpdateStudyAreaDto } from "../../application/dto/update-study-area.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
+import { Roles } from "../../../decorators/roles.decorator";
+import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Study Area")
 @Controller("api/study-area")

@@ -1,8 +1,8 @@
-import { SubjectController } from "./subject.controller";
-import { SubjectService } from "./subject.service";
-import { Subject } from "./entities/subject.entity";
-import { StudyAreaService } from "../study-area/study-area.service";
-import { StudyArea } from "../study-area/entities/study-area.entity";
+import { SubjectController } from "../subject.controller";
+import { SubjectService } from "../../../application/services/subject.service";
+import { Subject } from "../../../domain/entities/subject.entity";
+import { StudyAreaService } from "../../../application/services/study-area.service";
+import { StudyArea } from "../../../domain/entities/study-area.entity";
 
 describe("SubjectController", () => {
   let service: SubjectService;

@@ -1,23 +1,28 @@
 import { Module } from "@nestjs/common";
-import { QuestionService } from "../application/question.service";
-import { QuestionController } from "./question.controller";
+import { QuestionService } from "../application/services/question.service";
+import { QuestionController } from "./controllers/question.controller";
 import { DatabaseModule } from "../../database/database.module";
-import { questionProviders } from "./question.providers";
+import { questionProviders, studyAreaProviders, subjectProviders } from "./question.providers";
 import { LevelModule } from "../../levels/level.module";
 import { ConcursoModule } from "../../concurso/concurso.module";
-import { SubjectModule } from "../../subject/subject.module";
 import { UsersModule } from "../../users/users.module";
+import { SubjectService } from "../application/services/subject.service";
+import { SubjectController } from "./controllers/subject.controller";
+import { StudyAreaService } from "../application/services/study-area.service";
+import { StudyAreaController } from "./controllers/study-area.controller";
 
 @Module({
   imports: [
     DatabaseModule,
     LevelModule,
     ConcursoModule,
-    SubjectModule,
     UsersModule,
   ],
-  controllers: [QuestionController],
-  providers: [QuestionService, ...questionProviders],
-  exports: [QuestionService],
+  controllers: [QuestionController,SubjectController,StudyAreaController],
+  providers: [
+    QuestionService, ...questionProviders, 
+    SubjectService, ...subjectProviders, 
+    StudyAreaService, ...studyAreaProviders],
+  exports: [QuestionService, SubjectService,StudyAreaService],
 })
 export class QuestionModule {}

@@ -8,13 +8,13 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { SubjectService } from "./subject.service";
-import { CreateSubjectDto } from "./dto/create-subject.dto";
-import { UpdateSubjectDto } from "./dto/update-subject.dto";
+import { SubjectService } from "../../application/services/subject.service";
+import { CreateSubjectDto } from "../../application/dto/create-subject.dto";
+import { UpdateSubjectDto } from "../../application/dto/update-subject.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
+import { Roles } from "../../../decorators/roles.decorator";
+import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Subject")
 @Controller("api/subject")

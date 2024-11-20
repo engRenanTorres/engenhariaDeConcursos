@@ -1,9 +1,9 @@
 import { Inject, Injectable, Logger, NotFoundException } from "@nestjs/common";
-import { CreateSubjectDto } from "./dto/create-subject.dto";
-import { UpdateSubjectDto } from "./dto/update-subject.dto";
-import { Subject } from "./entities/subject.entity";
+import { CreateSubjectDto } from "../dto/create-subject.dto";
+import { UpdateSubjectDto } from "../dto/update-subject.dto";
+import { Subject } from "../../domain/entities/subject.entity";
 import { Repository } from "typeorm";
-import { StudyAreaService } from "../study-area/study-area.service";
+import { StudyAreaService } from "./study-area.service";
 
 @Injectable()
 export class SubjectService {
