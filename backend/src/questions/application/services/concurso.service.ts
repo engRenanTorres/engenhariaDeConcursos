@@ -5,11 +5,11 @@ import {
   NotFoundException,
   OnModuleInit,
 } from "@nestjs/common";
-import { CreateConcursoDto } from "./dto/create-concurso.dto";
-import { UpdateConcursoDto } from "./dto/update-concurso.dto";
-import { Concurso } from "./entities/concurso.entity";
+import { CreateConcursoDto } from "../dto/create-concurso.dto";
+import { UpdateConcursoDto } from "../dto/update-concurso.dto";
+import { Concurso } from "../../domain/entities/concurso.entity";
 import { Repository } from "typeorm";
-import { InstituteService } from "../institute/institute.service";
+import { InstituteService } from "./institute.service";
 
 @Injectable()
 export class ConcursoService implements OnModuleInit {

@@ -5,17 +5,13 @@ import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
-import { InstituteModule } from "./institute/institute.module";
 import { QuestionModule } from "./questions/infrastructure/question.module";
-import { ConcursoModule } from "./concurso/concurso.module";
 
 @Module({
   imports: [
     UsersModule,
     AuthModule,
     QuestionModule,
-    ConcursoModule,
-    InstituteModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, "../..", "frontend", "dist"),
     }),

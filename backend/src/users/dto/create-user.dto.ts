@@ -5,8 +5,8 @@ import {
   IsString,
   Matches,
 } from "class-validator";
-import { MessagesHelper } from "../../helpers/message.helper";
-import { RegexHelper } from "../../helpers/regex.helper";
+import { MessagesHelper } from "../../common/helpers/message.helper";
+import { RegexHelper } from "../../common/helpers/regex.helper";
 import { Role } from "../entities/role.enum";
 import { ApiProperty, OmitType } from "@nestjs/swagger";
 

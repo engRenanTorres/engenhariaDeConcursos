@@ -10,7 +10,7 @@ import { CreateQuestionDto } from "../dto/create-question.dto";
 import { UpdateQuestionDto } from "../dto/update-question.dto";
 import { Answer, Question } from "../../domain/entities/question.entity";
 import { LevelService } from "./level.service";
-import { ConcursoService } from "../../../concurso/concurso.service";
+import { ConcursoService } from "./concurso.service";
 import { StudyAreaService } from "./study-area.service";
 import { SubjectService } from "./subject.service";
 import { QuestionsChoice } from "../../domain/entities/questions-choice.entity";

@@ -31,7 +31,7 @@ import {
   InvalidPasswordResponse,
   UserFindSwagger,
 } from "./swagger/index-users.swagger";
-import { MessagesHelper } from "../helpers/message.helper";
+import { MessagesHelper } from "../common/helpers/message.helper";
 
 @Controller("api/users")
 @ApiTags("Users")

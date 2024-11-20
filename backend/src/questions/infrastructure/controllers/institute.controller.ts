@@ -8,13 +8,13 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { InstituteService } from "./institute.service";
-import { CreateInstituteDto } from "./dto/create-institute.dto";
-import { UpdateInstituteDto } from "./dto/update-institute.dto";
+import { InstituteService } from "../../application/services/institute.service";
+import { CreateInstituteDto } from "../../application/dto/create-institute.dto";
+import { UpdateInstituteDto } from "../../application/dto/update-institute.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../common/decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
+import { Roles } from "../../../common/decorators/roles.decorator";
+import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Institute")
 @Controller("api/institute")

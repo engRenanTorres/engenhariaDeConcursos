@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { QuestionsChoice } from "./questions-choice.entity";
-import { Concurso } from "../../../concurso/entities/concurso.entity";
+import { Concurso } from "./concurso.entity";
 import { Level } from "./level.entity";
 import { Subject } from "./subject.entity";
 import { User } from "../../../users/entities/user.entity";

@@ -5,10 +5,9 @@ import {
   NotFoundException,
   OnModuleInit,
 } from "@nestjs/common";
-import { CreateInstituteDto } from "./dto/create-institute.dto";
-import { UpdateInstituteDto } from "./dto/update-institute.dto";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Institute } from "./entities/institute.entity";
+import { CreateInstituteDto } from "../dto/create-institute.dto";
+import { UpdateInstituteDto } from "../dto/update-institute.dto";
+import { Institute } from "../../domain/entities/institute.entity";
 import { Repository } from "typeorm";
 
 @Injectable()

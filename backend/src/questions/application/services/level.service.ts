@@ -7,7 +7,6 @@ import {
 } from "@nestjs/common";
 import { CreateLevelDto } from "../dto/create-level.dto";
 import { UpdateLevelDto } from "../dto/update-level.dto";
-import { InjectRepository } from "@nestjs/typeorm";
 import { Level } from "../../domain/entities/level.entity";
 import { Repository } from "typeorm";
 

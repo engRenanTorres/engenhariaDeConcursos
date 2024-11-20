@@ -8,13 +8,13 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { ConcursoService } from "./concurso.service";
-import { CreateConcursoDto } from "./dto/create-concurso.dto";
-import { UpdateConcursoDto } from "./dto/update-concurso.dto";
+import { ConcursoService } from "../../application/services/concurso.service";
+import { CreateConcursoDto } from "../../application/dto/create-concurso.dto";
+import { UpdateConcursoDto } from "../../application/dto/update-concurso.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../common/decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
+import { Roles } from "../../../common/decorators/roles.decorator";
+import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Concurso")
 @Controller("api/concurso")

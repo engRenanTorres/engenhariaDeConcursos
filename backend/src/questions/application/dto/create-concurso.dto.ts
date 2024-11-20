@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString, Max } from "class-validator";
-import { Institute } from "../../institute/entities/institute.entity";
+import { Institute } from "../../domain/entities/institute.entity";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateConcursoDto {

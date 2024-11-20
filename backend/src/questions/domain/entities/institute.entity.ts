@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Concurso } from "../../concurso/entities/concurso.entity";
+import { Concurso } from "./concurso.entity";
 
 @Entity("institute")
 export class Institute {
