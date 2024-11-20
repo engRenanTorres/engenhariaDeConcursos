@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - DATABASE_USER=renan
+      - DATABASE_PASSWORD=dbengconc
+      - DATABASE_NAME=myapp
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done;'
+    #for mac
+    command: sh -c 'sleep 8; node dist/main;'
+    depends_on:
+      - db
+    networks:
+      - app-network
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3001
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=engconc
+      - MYSQL_USER=renan
+      - MYSQL_PASSWORD=dbengconc
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - .docker/mariadb_data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
