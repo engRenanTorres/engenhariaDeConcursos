@@ -8,7 +8,7 @@ import { join } from "path";
 import { InstituteModule } from "./institute/institute.module";
 import { StudyAreaModule } from "./study-area/study-area.module";
 import { SubjectModule } from "./subject/subject.module";
-import { QuestionModule } from "./questions/question.module";
+import { QuestionModule } from "./questions/infrastructure/question.module";
 import { LevelModule } from "./levels/level.module";
 import { ConcursoModule } from "./concurso/concurso.module";
 

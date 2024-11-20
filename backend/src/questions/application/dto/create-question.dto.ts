@@ -1,10 +1,10 @@
 import { IsArray, IsInt, IsNotEmpty, IsString, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { Answer } from "../entities/question.entity";
-import { Level } from "../../levels/entities/level.entity";
-import { Subject } from "../../subject/entities/subject.entity";
-import { User } from "../../users/entities/user.entity";
-import { Concurso } from "../../concurso/entities/concurso.entity";
+import { Answer } from "../../domain/entities/question.entity";
+import { Level } from "../../../levels/entities/level.entity";
+import { Subject } from "../../../subject/entities/subject.entity";
+import { User } from "../../../users/entities/user.entity";
+import { Concurso } from "../../../concurso/entities/concurso.entity";
 
 export class CreateChoicesDto {
   @IsString()

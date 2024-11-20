@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { hashSync } from "bcrypt";
 import { Role } from "./role.enum";
-import { Question } from "../../questions/entities/question.entity";
+import { Question } from "../../questions/domain/entities/question.entity";
 
 @Entity("users")
 export class User {

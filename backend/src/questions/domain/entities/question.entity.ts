@@ -7,10 +7,10 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { QuestionsChoice } from "./questions-choice.entity";
-import { Concurso } from "../../concurso/entities/concurso.entity";
-import { Level } from "../../levels/entities/level.entity";
-import { Subject } from "../../subject/entities/subject.entity";
-import { User } from "../../users/entities/user.entity";
+import { Concurso } from "../../../concurso/entities/concurso.entity";
+import { Level } from "../../../levels/entities/level.entity";
+import { Subject } from "../../../subject/entities/subject.entity";
+import { User } from "../../../users/entities/user.entity";
 
 export enum Answer {
   A = "A",

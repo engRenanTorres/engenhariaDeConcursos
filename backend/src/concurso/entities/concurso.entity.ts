@@ -7,7 +7,7 @@ import {
   OneToMany,
 } from "typeorm";
 import { Institute } from "../../institute/entities/institute.entity";
-import { Question } from "../../questions/entities/question.entity";
+import { Question } from "../../questions/domain/entities/question.entity";
 
 @Entity("concurso")
 export class Concurso {

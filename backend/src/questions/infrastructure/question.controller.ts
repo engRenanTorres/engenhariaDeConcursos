@@ -10,14 +10,14 @@ import {
   Headers,
   Query,
 } from "@nestjs/common";
-import { QuestionService } from "./question.service";
-import { CreateQuestionDto } from "./dto/create-question.dto";
-import { UpdateQuestionDto } from "./dto/update-question.dto";
+import { QuestionService } from "../application/question.service";
+import { CreateQuestionDto } from "../application/dto/create-question.dto";
+import { UpdateQuestionDto } from "../application/dto/update-question.dto";
 import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
-import { ReqHeaders } from "../auth/models/req-headers.model";
+import { Roles } from "../../decorators/roles.decorator";
+import { Role } from "../../users/entities/role.enum";
+import { ReqHeaders } from "../../auth/models/req-headers.model";
 import { PageableQueries } from "./queries/pageable-queries.dto";
 
 @Controller("api/question")

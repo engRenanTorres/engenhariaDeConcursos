@@ -1,12 +1,12 @@
 import { Module } from "@nestjs/common";
-import { QuestionService } from "./question.service";
+import { QuestionService } from "../application/question.service";
 import { QuestionController } from "./question.controller";
-import { DatabaseModule } from "../database/database.module";
+import { DatabaseModule } from "../../database/database.module";
 import { questionProviders } from "./question.providers";
-import { LevelModule } from "../levels/level.module";
-import { ConcursoModule } from "../concurso/concurso.module";
-import { SubjectModule } from "../subject/subject.module";
-import { UsersModule } from "../users/users.module";
+import { LevelModule } from "../../levels/level.module";
+import { ConcursoModule } from "../../concurso/concurso.module";
+import { SubjectModule } from "../../subject/subject.module";
+import { UsersModule } from "../../users/users.module";
 
 @Module({
   imports: [
