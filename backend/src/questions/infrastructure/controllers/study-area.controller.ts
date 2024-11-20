@@ -13,7 +13,7 @@ import { CreateStudyAreaDto } from "../../application/dto/create-study-area.dto"
 import { UpdateStudyAreaDto } from "../../application/dto/update-study-area.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../../../decorators/roles.decorator";
+import { Roles } from "../../../common/decorators/roles.decorator";
 import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Study Area")

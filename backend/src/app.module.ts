@@ -7,7 +7,6 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { InstituteModule } from "./institute/institute.module";
 import { QuestionModule } from "./questions/infrastructure/question.module";
-import { LevelModule } from "./levels/level.module";
 import { ConcursoModule } from "./concurso/concurso.module";
 
 @Module({
@@ -16,7 +15,6 @@ import { ConcursoModule } from "./concurso/concurso.module";
     AuthModule,
     QuestionModule,
     ConcursoModule,
-    LevelModule,
     InstituteModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, "../..", "frontend", "dist"),

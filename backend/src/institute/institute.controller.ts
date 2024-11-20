@@ -13,7 +13,7 @@ import { CreateInstituteDto } from "./dto/create-institute.dto";
 import { UpdateInstituteDto } from "./dto/update-institute.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../decorators/roles.decorator";
+import { Roles } from "../common/decorators/roles.decorator";
 import { Role } from "../users/entities/role.enum";
 
 @ApiTags("Institute")

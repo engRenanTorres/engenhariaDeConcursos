@@ -8,13 +8,13 @@ import {
   Delete,
   UseGuards,
 } from "@nestjs/common";
-import { LevelService } from "./level.service";
-import { CreateLevelDto } from "./dto/create-level.dto";
-import { UpdateLevelDto } from "./dto/update-level.dto";
+import { LevelService } from "../../application/services/level.service";
+import { CreateLevelDto } from "../../application/dto/create-level.dto";
+import { UpdateLevelDto } from "../../application/dto/update-level.dto";
 import { ApiBearerAuth, ApiForbiddenResponse, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../decorators/roles.decorator";
-import { Role } from "../users/entities/role.enum";
+import { Roles } from "../../../common/decorators/roles.decorator";
+import { Role } from "../../../users/entities/role.enum";
 
 @ApiTags("Level")
 @Controller("api/level")

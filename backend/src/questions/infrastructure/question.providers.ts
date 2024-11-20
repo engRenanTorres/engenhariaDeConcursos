@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 import { Question } from "../domain/entities/question.entity";
 import { Subject } from "../domain/entities/subject.entity";
 import { StudyArea } from "../domain/entities/study-area.entity";
+import { Level } from "../domain/entities/level.entity";
 
 export const questionProviders = [
   {
@@ -25,6 +26,14 @@ export const studyAreaProviders = [
   {
     provide: "STUDY_AREA_REPOSITORY",
     useFactory: (dataSource: DataSource) => dataSource.getRepository(StudyArea),
+    inject: ["DATA_SOURCE"],
+  },
+];
+
+export const levelProviders = [
+  {
+    provide: "LEVEL_REPOSITORY",
+    useFactory: (dataSource: DataSource) => dataSource.getRepository(Level),
     inject: ["DATA_SOURCE"],
   },
 ];

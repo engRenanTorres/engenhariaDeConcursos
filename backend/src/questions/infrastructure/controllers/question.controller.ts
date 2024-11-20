@@ -15,7 +15,7 @@ import { CreateQuestionDto } from "../../application/dto/create-question.dto";
 import { UpdateQuestionDto } from "../../application/dto/update-question.dto";
 import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "../../../decorators/roles.decorator";
+import { Roles } from "../../../common/decorators/roles.decorator";
 import { Role } from "../../../users/entities/role.enum";
 import { ReqHeaders } from "../../../auth/models/req-headers.model";
 import { PageableQueries } from "../queries/pageable-queries.dto";

@@ -9,7 +9,7 @@ import { CreateStudyAreaDto } from "../dto/create-study-area.dto";
 import { UpdateStudyAreaDto } from "../dto/update-study-area.dto";
 import { StudyArea } from "../../domain/entities/study-area.entity";
 import { Repository } from "typeorm";
-import { MessagesHelper } from "../../../helpers/message.helper";
+import { MessagesHelper } from "../../../common/helpers/message.helper";
 
 @Injectable()
 export class StudyAreaService implements OnModuleInit {

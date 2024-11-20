@@ -1,12 +1,12 @@
 import { JwtService } from "@nestjs/jwt";
-import { UsersService } from "../users/users.service";
+import { UsersService } from "../../users/users.service";
 import {
   ForbiddenException,
   NotFoundException,
   UnauthorizedException,
 } from "@nestjs/common";
-import { User } from "../users/entities/user.entity";
-import { TokenPayload } from "../auth/models/jwt-payload.model";
+import { User } from "../../users/entities/user.entity";
+import { TokenPayload } from "../../auth/models/jwt-payload.model";
 
 const extractAuthUser = async (
   autorization: string,

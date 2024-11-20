@@ -5,7 +5,7 @@ import { User } from "../users/entities/user.entity";
 import { JwtService } from "@nestjs/jwt";
 import { TokenPayload } from "./models/jwt-payload.model";
 import { ReqHeaders } from "./models/req-headers.model";
-import extractAuthUser from "../helpers/get-auth-user.helper";
+import extractAuthUser from "../common/helpers/get-auth-user.helper";
 
 @Injectable()
 export class AuthService {

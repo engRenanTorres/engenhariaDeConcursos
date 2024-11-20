@@ -9,13 +9,13 @@ import { Repository } from "typeorm";
 import { CreateQuestionDto } from "../dto/create-question.dto";
 import { UpdateQuestionDto } from "../dto/update-question.dto";
 import { Answer, Question } from "../../domain/entities/question.entity";
-import { LevelService } from "../../../levels/level.service";
+import { LevelService } from "./level.service";
 import { ConcursoService } from "../../../concurso/concurso.service";
 import { StudyAreaService } from "./study-area.service";
 import { SubjectService } from "./subject.service";
 import { QuestionsChoice } from "../../domain/entities/questions-choice.entity";
 import { UsersService } from "../../../users/users.service";
-import extractAuthUser from "../../../helpers/get-auth-user.helper";
+import extractAuthUser from "../../../common/helpers/get-auth-user.helper";
 
 @Injectable()
 export class QuestionService {

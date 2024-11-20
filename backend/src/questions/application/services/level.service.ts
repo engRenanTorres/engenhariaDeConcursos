@@ -5,10 +5,10 @@ import {
   NotFoundException,
   OnModuleInit,
 } from "@nestjs/common";
-import { CreateLevelDto } from "./dto/create-level.dto";
-import { UpdateLevelDto } from "./dto/update-level.dto";
+import { CreateLevelDto } from "../dto/create-level.dto";
+import { UpdateLevelDto } from "../dto/update-level.dto";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Level } from "./entities/level.entity";
+import { Level } from "../../domain/entities/level.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
