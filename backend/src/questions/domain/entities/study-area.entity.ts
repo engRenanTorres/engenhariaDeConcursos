@@ -1,7 +1,7 @@
-import { Subject } from "./subject.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Subject } from './subject.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("study-areas")
+@Entity('study-areas')
 export class StudyArea {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,6 +9,6 @@ export class StudyArea {
   name: string;
   @Column()
   about: string;
-  @OneToMany((type) => Subject, (subject) => subject.area)
+  @OneToMany(type => Subject, subject => subject.area)
   subjects: Subject[];
 }

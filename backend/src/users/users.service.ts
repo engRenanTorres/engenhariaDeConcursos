@@ -1,42 +1,42 @@
-import { Inject, Injectable, Logger, OnModuleInit } from "@nestjs/common";
-import { User } from "./entities/user.entity";
-import { CreateSpecialUserDto, CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto/update-user.dto";
-import { Repository } from "typeorm";
-import { NotFoundException } from "@nestjs/common/exceptions";
-import { Role } from "./entities/role.enum";
-import { DataBaseError } from "../common/errors/types/DatabaseError";
+import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { User } from './entities/user.entity';
+import { CreateSpecialUserDto, CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto/update-user.dto';
+import { Repository } from 'typeorm';
+import { NotFoundException } from '@nestjs/common/exceptions';
+import { Role } from './entities/role.enum';
+import { DataBaseError } from '../common/errors/types/DatabaseError';
 
 @Injectable()
 export class UsersService implements OnModuleInit {
-  @Inject("USER_REPOSITORY")
+  @Inject('USER_REPOSITORY')
   private readonly usersRepository: Repository<User>;
 
-  private logger: Logger = new Logger("UserService");
+  private logger: Logger = new Logger('UserService');
 
   async onModuleInit(): Promise<void> {
     const users = await this.usersRepository.find();
     if (users.length === 0) {
-      this.logger.log("adm user has been created");
+      this.logger.log('adm user has been created');
       const adm: CreateSpecialUserDto = {
-        name: "Adm",
-        cnpj: "00000000000",
-        email: "adm@adm.com",
-        password: "IamAdm123",
+        name: 'Adm',
+        cnpj: '00000000000',
+        email: 'adm@adm.com',
+        password: 'IamAdm123',
         roles: Role.ADM,
       };
       const normal: CreateSpecialUserDto = {
-        name: "Normal",
-        cnpj: "00000000002",
-        email: "normal@normal.com",
-        password: "IamNormal123",
+        name: 'Normal',
+        cnpj: '00000000002',
+        email: 'normal@normal.com',
+        password: 'IamNormal123',
         roles: Role.USER,
       };
       await this.create(adm);
       await this.create(normal);
       return;
     }
-    this.logger.log("Dont need to create adm. users.length = " + users.length);
+    this.logger.log('Dont need to create adm. users.length = ' + users.length);
     return;
   }
 
@@ -55,7 +55,7 @@ export class UsersService implements OnModuleInit {
     query.where({ email: email });
     query.addSelect('user.password'); // show the hidden column
     const user = await query.getOne();
-    
+
     try {
       this.checkIfUserExiste(user, email);
     } catch (error) {

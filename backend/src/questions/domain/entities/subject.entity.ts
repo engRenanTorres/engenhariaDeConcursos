@@ -1,23 +1,23 @@
-import { Question } from "./question.entity";
-import { StudyArea } from "./study-area.entity";
+import { Question } from './question.entity';
+import { StudyArea } from './study-area.entity';
 import {
   Column,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
+} from 'typeorm';
 
-@Entity("subjects")
+@Entity('subjects')
 export class Subject {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 50, nullable: false })
   name: string;
-  @Column({ type: "text", nullable: false })
+  @Column({ type: 'text', nullable: false })
   about: string;
-  @ManyToOne(() => StudyArea, (study) => study.subjects, { eager: true })
+  @ManyToOne(() => StudyArea, study => study.subjects, { eager: true })
   area: StudyArea;
-  @OneToMany(() => Question, (question) => question.subject)
+  @OneToMany(() => Question, question => question.subject)
   questions: Question[];
 }

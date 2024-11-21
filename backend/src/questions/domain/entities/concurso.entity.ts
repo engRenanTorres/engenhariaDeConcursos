@@ -5,25 +5,25 @@ import {
   BeforeInsert,
   ManyToOne,
   OneToMany,
-} from "typeorm";
-import { Institute } from "./institute.entity";
-import { Question } from "./question.entity";
+} from 'typeorm';
+import { Institute } from './institute.entity';
+import { Question } from './question.entity';
 
-@Entity("concurso")
+@Entity('concurso')
 export class Concurso {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 50, nullable: false })
   name: string;
   @Column({ nullable: true, default: null })
   about: string;
-  @Column({ type: "int", nullable: true, default: null })
+  @Column({ type: 'int', nullable: true, default: null })
   year: number;
-  @ManyToOne(() => Institute, (institute) => institute.concursos, {
+  @ManyToOne(() => Institute, institute => institute.concursos, {
     eager: true,
   })
   institute: Institute;
-  @OneToMany(() => Question, (question) => question.concurso)
+  @OneToMany(() => Question, question => question.concurso)
   questions: Question[];
 
   @BeforeInsert()

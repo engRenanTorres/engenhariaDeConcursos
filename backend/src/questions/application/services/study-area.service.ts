@@ -4,39 +4,40 @@ import {
   Logger,
   NotFoundException,
   OnModuleInit,
-} from "@nestjs/common";
-import { CreateStudyAreaDto } from "../dto/create-study-area.dto";
-import { UpdateStudyAreaDto } from "../dto/update-study-area.dto";
-import { StudyArea } from "../../domain/entities/study-area.entity";
-import { Repository } from "typeorm";
-import { MessagesHelper } from "../../../common/helpers/message.helper";
+} from '@nestjs/common';
+import { CreateStudyAreaDto } from '../dto/create-study-area.dto';
+import { UpdateStudyAreaDto } from '../dto/update-study-area.dto';
+import { StudyArea } from '../../domain/entities/study-area.entity';
+import { Repository } from 'typeorm';
+import { MessagesHelper } from '../../../common/helpers/message.helper';
 
 @Injectable()
 export class StudyAreaService implements OnModuleInit {
-  @Inject("STUDY_AREA_REPOSITORY")
+  @Inject('STUDY_AREA_REPOSITORY')
   private readonly studyAreasRepository: Repository<StudyArea>;
 
-  private logger: Logger = new Logger("StudyAreaService");
+  private logger: Logger = new Logger('StudyAreaService');
 
   async onModuleInit(): Promise<void> {
     const users = await this.studyAreasRepository.find();
     if (users.length === 0) {
-      this.logger.log("adm user has been created");
+      this.logger.log('adm user has been created');
       const adm: CreateStudyAreaDto = {
-        name: "Engenharia Civil",
-        about: "Área especializada na construção civil",
+        name: 'Engenharia Civil',
+        about: 'Área especializada na construção civil',
       };
       const normal: CreateStudyAreaDto = {
-        name: "Engenharia de Segurança do Trabalho",
-        about: "Área especializada na segurança, saúde e qualidade do trabalhador industrial.",
+        name: 'Engenharia de Segurança do Trabalho',
+        about:
+          'Área especializada na segurança, saúde e qualidade do trabalhador industrial.',
       };
       await this.create(adm);
       await this.create(normal);
       return;
     }
     this.logger.log(
-      "Dont need to create default study areas. studyarea.length = " +
-        users.length
+      'Dont need to create default study areas. studyarea.length = ' +
+        users.length,
     );
     return;
   }
@@ -47,13 +48,13 @@ export class StudyAreaService implements OnModuleInit {
   }
 
   async findAll() {
-    return await this.studyAreasRepository.find({ relations: ["subjects"] });
+    return await this.studyAreasRepository.find({ relations: ['subjects'] });
   }
 
   async findOne(id: number) {
     const studyArea = await this.studyAreasRepository.findOne({
       where: { id },
-      relations: ["subjects"],
+      relations: ['subjects'],
     });
     if (!studyArea) {
       throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);

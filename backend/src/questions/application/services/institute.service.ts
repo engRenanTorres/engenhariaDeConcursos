@@ -4,41 +4,41 @@ import {
   Logger,
   NotFoundException,
   OnModuleInit,
-} from "@nestjs/common";
-import { CreateInstituteDto } from "../dto/create-institute.dto";
-import { UpdateInstituteDto } from "../dto/update-institute.dto";
-import { Institute } from "../../domain/entities/institute.entity";
-import { Repository } from "typeorm";
+} from '@nestjs/common';
+import { CreateInstituteDto } from '../dto/create-institute.dto';
+import { UpdateInstituteDto } from '../dto/update-institute.dto';
+import { Institute } from '../../domain/entities/institute.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class InstituteService implements OnModuleInit {
   constructor(
-    @Inject("INSTITUTE_REPOSITORY")
-    private readonly instituteRepository: Repository<Institute>
+    @Inject('INSTITUTE_REPOSITORY')
+    private readonly instituteRepository: Repository<Institute>,
   ) {}
 
-  private logger: Logger = new Logger("InstituteService");
+  private logger: Logger = new Logger('InstituteService');
 
   async onModuleInit(): Promise<void> {
     const institutes = await this.instituteRepository.find();
     if (institutes.length === 0) {
-      this.logger.log("default institute has been created");
+      this.logger.log('default institute has been created');
       const banca1 = {
-        name: "FGV",
-        about: "00000000000",
-        contact: "adm@adm.com",
+        name: 'FGV',
+        about: '00000000000',
+        contact: 'adm@adm.com',
       };
       const banca2 = {
-        name: "Cesgranrio",
-        about: "00000000002",
-        contact: "normal@normal.com",
+        name: 'Cesgranrio',
+        about: '00000000002',
+        contact: 'normal@normal.com',
       };
       await this.create(banca1);
       await this.create(banca2);
       return;
     }
     this.logger.log(
-      "Dont need to institues. Institutes.length = " + institutes.length
+      'Dont need to institues. Institutes.length = ' + institutes.length,
     );
     return;
   }

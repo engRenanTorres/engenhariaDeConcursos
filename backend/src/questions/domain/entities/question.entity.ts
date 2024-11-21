@@ -5,51 +5,51 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import { QuestionsChoice } from "./questions-choice.entity";
-import { Concurso } from "./concurso.entity";
-import { Level } from "./level.entity";
-import { Subject } from "./subject.entity";
-import { User } from "../../../users/entities/user.entity";
+} from 'typeorm';
+import { QuestionsChoice } from './questions-choice.entity';
+import { Concurso } from './concurso.entity';
+import { Level } from './level.entity';
+import { Subject } from './subject.entity';
+import { User } from '../../../users/entities/user.entity';
 
 export enum Answer {
-  A = "A",
-  B = "B",
-  C = "C",
-  D = "D",
-  E = "E",
-  V = "V",
-  F = "F",
+  A = 'A',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E',
+  V = 'V',
+  F = 'F',
 }
 
-@Entity("question")
+@Entity('question')
 export class Question {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 50, nullable: false })
   question: string;
-  @Column({ type: "enum", enum: Answer, nullable: false })
+  @Column({ type: 'enum', enum: Answer, nullable: false })
   answer: Answer;
-  @Column({ type: "text", nullable: true, default: null })
+  @Column({ type: 'text', nullable: true, default: null })
   tip: string;
-  @ManyToOne(() => Level, (level) => level.questions, { eager: true })
+  @ManyToOne(() => Level, level => level.questions, { eager: true })
   level: Level;
-  @ManyToOne(() => Subject, (subject) => subject.questions, { eager: true })
+  @ManyToOne(() => Subject, subject => subject.questions, { eager: true })
   subject: Subject;
-  @OneToMany(() => QuestionsChoice, (choices) => choices.question, {
+  @OneToMany(() => QuestionsChoice, choices => choices.question, {
     cascade: true,
     eager: true,
   })
   questionsChoices: QuestionsChoice[];
-  @ManyToOne(() => Concurso, (concurso) => concurso.questions, { eager: true })
+  @ManyToOne(() => Concurso, concurso => concurso.questions, { eager: true })
   concurso: Concurso;
   @ManyToOne(() => User, { eager: true })
   createdBy: User;
-  @Column({ type: "date", nullable: true, default: null })
+  @Column({ type: 'date', nullable: true, default: null })
   createdAt: Date;
   @ManyToOne(() => User, { eager: true, nullable: true })
   lastUpdateBy: User;
-  @Column({ type: "date", nullable: true, default: null })
+  @Column({ type: 'date', nullable: true, default: null })
   lastUpdateAt: Date;
 
   constructor(
@@ -61,7 +61,7 @@ export class Question {
     questionsChoices?: QuestionsChoice[],
     concurso?: Concurso,
     createdBy?: User | null,
-    lastUpdateBy?: User
+    lastUpdateBy?: User,
   ) {
     this.question = question;
     this.answer = answer;

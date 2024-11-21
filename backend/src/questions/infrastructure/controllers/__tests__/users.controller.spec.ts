@@ -1,10 +1,10 @@
-import { SubjectController } from "../subject.controller";
-import { SubjectService } from "../../../application/services/subject.service";
-import { Subject } from "../../../domain/entities/subject.entity";
-import { StudyAreaService } from "../../../application/services/study-area.service";
-import { StudyArea } from "../../../domain/entities/study-area.entity";
+import { SubjectController } from '../subject.controller';
+import { SubjectService } from '../../../application/services/subject.service';
+import { Subject } from '../../../domain/entities/subject.entity';
+import { StudyAreaService } from '../../../application/services/study-area.service';
+import { StudyArea } from '../../../domain/entities/study-area.entity';
 
-describe("SubjectController", () => {
+describe('SubjectController', () => {
   let service: SubjectService;
   let areaService: StudyAreaService;
   let controller: SubjectController;
@@ -12,10 +12,9 @@ describe("SubjectController", () => {
   let areaTest: StudyArea;
 
   beforeEach(async () => {
-    areaService= new StudyAreaService();
+    areaService = new StudyAreaService();
     service = new SubjectService(areaService);
     controller = new SubjectController(service);
-
   });
 
   beforeAll(() => {
@@ -24,44 +23,46 @@ describe("SubjectController", () => {
       name: 'eng civil',
       about: 'construction',
       subjects: [],
-    }
+    };
 
     normalSubject = {
       id: 1,
       questions: [],
-      name: "Usuario Teste",
-      about: "Materia Legal",
+      name: 'Usuario Teste',
+      about: 'Materia Legal',
       area: areaTest,
     };
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  describe("findAll", () => {
-    it("should return an array of subject", async () => {
+  describe('findAll', () => {
+    it('should return an array of subject', async () => {
       jest
-        .spyOn(service, "findAll")
+        .spyOn(service, 'findAll')
         .mockImplementation(() => Promise.resolve([normalSubject]));
 
       expect(await controller.findAll()).toStrictEqual([normalSubject]);
     });
   });
 
-  describe("findById", () => {
-    it("should return a subject", async () => {
+  describe('findById', () => {
+    it('should return a subject', async () => {
       jest
-        .spyOn(service, "findById")
+        .spyOn(service, 'findById')
         .mockImplementation(() => Promise.resolve(normalSubject));
 
-      expect(await controller.findOne(normalSubject.id.toString())).toBe(normalSubject);
+      expect(await controller.findOne(normalSubject.id.toString())).toBe(
+        normalSubject,
+      );
     });
   });
-  describe("create", () => {
-    it("should return a subject", async () => {
+  describe('create', () => {
+    it('should return a subject', async () => {
       jest
-        .spyOn(service, "create")
+        .spyOn(service, 'create')
         .mockImplementation(() => Promise.resolve(normalSubject));
 
       expect(await controller.create(normalSubject)).toBe(normalSubject);

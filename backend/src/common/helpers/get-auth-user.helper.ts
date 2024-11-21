@@ -1,19 +1,19 @@
-import { JwtService } from "@nestjs/jwt";
-import { UsersService } from "../../users/users.service";
+import { JwtService } from '@nestjs/jwt';
+import { UsersService } from '../../users/users.service';
 import {
   ForbiddenException,
   NotFoundException,
   UnauthorizedException,
-} from "@nestjs/common";
-import { User } from "../../users/entities/user.entity";
-import { TokenPayload } from "../../auth/models/jwt-payload.model";
+} from '@nestjs/common';
+import { User } from '../../users/entities/user.entity';
+import { TokenPayload } from '../../auth/models/jwt-payload.model';
 
 const extractAuthUser = async (
   autorization: string,
-  userService: UsersService
+  userService: UsersService,
 ) => {
   if (!autorization)
-    throw new ForbiddenException("Autorization header  is missing.");
+    throw new ForbiddenException('Autorization header  is missing.');
   const accessToken = autorization.slice(7);
   const jwtService = new JwtService();
   try {
@@ -22,7 +22,7 @@ const extractAuthUser = async (
     });
   } catch (error) {
     throw new UnauthorizedException(
-      "The Authorization Token is not Valid: " + error.message
+      'The Authorization Token is not Valid: ' + error.message,
     );
   }
   const decodedToken = jwtService.decode(accessToken) as TokenPayload;
@@ -31,7 +31,7 @@ const extractAuthUser = async (
   try {
     user = await userService.findById(+decodedToken.sub);
   } catch (error) {
-    throw new NotFoundException("Usuário inexistente: " + error.message);
+    throw new NotFoundException('Usuário inexistente: ' + error.message);
   }
   return user;
 };

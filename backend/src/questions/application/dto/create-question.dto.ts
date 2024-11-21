@@ -1,30 +1,30 @@
-import { IsArray, IsInt, IsNotEmpty, IsString, Matches } from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
-import { Answer } from "../../domain/entities/question.entity";
+import { IsArray, IsInt, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { Answer } from '../../domain/entities/question.entity';
 export class CreateChoicesDto {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ description: "Possible answer to question." })
+  @ApiProperty({ description: 'Possible answer to question.' })
   choice: string;
 }
 
 export class CreateQuestionDto {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ description: "Question text." })
+  @ApiProperty({ description: 'Question text.' })
   question: string;
 
   @IsNotEmpty()
   @ApiProperty({
-    type: "enum",
+    type: 'enum',
     enum: Answer,
-    description: "Answer of the question.",
+    description: 'Answer of the question.',
   })
   answer: Answer;
 
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ description: "Explaning tips." })
+  @ApiProperty({ description: 'Explaning tips.' })
   tip: string;
 
   @IsInt()

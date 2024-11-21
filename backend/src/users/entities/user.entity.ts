@@ -4,12 +4,12 @@ import {
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import { hashSync } from "bcrypt";
-import { Role } from "./role.enum";
-import { Question } from "../../questions/domain/entities/question.entity";
+} from 'typeorm';
+import { hashSync } from 'bcrypt';
+import { Role } from './role.enum';
+import { Question } from '../../questions/domain/entities/question.entity';
 
-@Entity("users")
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -19,20 +19,20 @@ export class User {
   cnpj: string;
   @Column({ name: `email`, nullable: false, unique: true })
   email: string;
-  @Column({ name: "password", nullable: true, select: false })
+  @Column({ name: 'password', nullable: true, select: false })
   password: string;
   @Column({
-    name: "roles",
-    type: "enum",
+    name: 'roles',
+    type: 'enum',
     enum: Role,
     nullable: true,
     default: 3,
   })
   roles: Role;
 
-  @OneToMany(() => Question, (question) => question.createdBy)
+  @OneToMany(() => Question, question => question.createdBy)
   insertedQuestions: Question[];
-  @OneToMany(() => Question, (question) => question.lastUpdateAt)
+  @OneToMany(() => Question, question => question.lastUpdateAt)
   updatedQuestions: Question[];
 
   constructor(user: Partial<User>) {

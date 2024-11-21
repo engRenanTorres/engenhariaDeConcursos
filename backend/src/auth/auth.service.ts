@@ -1,17 +1,17 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { UsersService } from "../users/users.service";
-import { compareSync } from "bcrypt";
-import { User } from "../users/entities/user.entity";
-import { JwtService } from "@nestjs/jwt";
-import { TokenPayload } from "./models/jwt-payload.model";
-import { ReqHeaders } from "./models/req-headers.model";
-import extractAuthUser from "../common/helpers/get-auth-user.helper";
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+import { compareSync } from 'bcrypt';
+import { User } from '../users/entities/user.entity';
+import { JwtService } from '@nestjs/jwt';
+import { TokenPayload } from './models/jwt-payload.model';
+import { ReqHeaders } from './models/req-headers.model';
+import extractAuthUser from '../common/helpers/get-auth-user.helper';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UsersService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
   ) {}
 
   async login(user: User): Promise<{ token: string }> {
