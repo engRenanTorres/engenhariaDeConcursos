@@ -59,10 +59,12 @@ export class InstituteService implements OnModuleInit {
   }
 
   update(id: number, updateInstituteDto: UpdateInstituteDto) {
+    // TODO: update institute
     return `This action updates a #${id} institute`;
   }
 
   remove(id: number) {
+    // TODO: delete institute
     return `This action removes a #${id} institute`;
   }
   private checkIfUserExiste(user: object, id: number) {

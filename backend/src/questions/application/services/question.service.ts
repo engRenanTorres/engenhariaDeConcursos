@@ -1,17 +1,10 @@
-import {
-  Inject,
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateQuestionDto } from '../dto/create-question.dto';
 import { UpdateQuestionDto } from '../dto/update-question.dto';
-import { Answer, Question } from '../../domain/entities/question.entity';
+import { Question } from '../../domain/entities/question.entity';
 import { LevelService } from './level.service';
 import { ConcursoService } from './concurso.service';
-import { StudyAreaService } from './study-area.service';
 import { SubjectService } from './subject.service';
 import { QuestionsChoice } from '../../domain/entities/questions-choice.entity';
 import { UsersService } from '../../../users/users.service';

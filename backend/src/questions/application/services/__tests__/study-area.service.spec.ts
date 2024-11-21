@@ -167,8 +167,6 @@ describe('StudyAreaService', () => {
       expect(expectOutput).toStrictEqual(studyArea);
     });
     it('should throw a notFoundExeption when trying to remove a study area that not exists', async () => {
-      const email = 'myemail';
-
       const mockStudyAreaRepository = {
         findOne: jest.fn().mockReturnValue(Promise.resolve(null)),
         remove: jest.fn().mockReturnValue(Promise.resolve(null)),

@@ -18,7 +18,6 @@ import { StudyAreaController } from './controllers/study-area.controller';
 import { LevelService } from '../application/services/level.service';
 import { LevelController } from './controllers/level.controller';
 import { InstituteService } from '../application/services/institute.service';
-import { Concurso } from '../domain/entities/concurso.entity';
 import { ConcursoService } from '../application/services/concurso.service';
 
 @Module({

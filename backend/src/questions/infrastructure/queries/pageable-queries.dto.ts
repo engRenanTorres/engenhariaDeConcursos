@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNumber, IsNumberString } from 'class-validator';
+import { IsNumberString } from 'class-validator';
 
 export class PageableQueries {
   @IsNumberString()

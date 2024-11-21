@@ -9,6 +9,7 @@ export class StudyArea {
   name: string;
   @Column()
   about: string;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @OneToMany(type => Subject, subject => subject.area)
   subjects: Subject[];
 }

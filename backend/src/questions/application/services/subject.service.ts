@@ -68,10 +68,12 @@ export class SubjectService {
   }
 
   update(id: number, updateSubjectDto: UpdateSubjectDto) {
+    // TODO: update subject
     return `This action updates a #${id} subject`;
   }
 
   remove(id: number) {
+    // TODO: delete subject
     return `This action removes a #${id} subject`;
   }
 }

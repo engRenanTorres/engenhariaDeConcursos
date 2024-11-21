@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, Max } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { Institute } from '../../domain/entities/institute.entity';
 import { ApiProperty } from '@nestjs/swagger';
 

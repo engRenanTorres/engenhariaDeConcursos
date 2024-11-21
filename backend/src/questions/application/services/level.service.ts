@@ -59,10 +59,12 @@ export class LevelService implements OnModuleInit {
   }
 
   update(id: number, updateLevelDto: UpdateLevelDto) {
+    // TODO: update level
     return `This action updates a #${id} level`;
   }
 
   remove(id: number) {
+    // TODO: delete level
     return `This action removes a #${id} level`;
   }
 }

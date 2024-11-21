@@ -180,7 +180,6 @@ describe('SubjectsService', () => {
 
   describe.skip('Removing subject', () => {
     it('should remove one subject', async () => {
-      const email = 'usuario@teste.com';
       const expectOutputSubject = [
         {
           id: 1,
@@ -201,8 +200,6 @@ describe('SubjectsService', () => {
       expect(expectOutputSubject).toStrictEqual(subject);
     });
     it('should throw a notFoundExeption when trying to remove a subject that not exists', async () => {
-      const email = 'myemail';
-
       const mockSubjectRepository = {
         findOne: jest.fn().mockReturnValue(Promise.resolve(null)),
         remove: jest.fn().mockReturnValue(Promise.resolve(null)),

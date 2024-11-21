@@ -1,9 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { compareSync } from 'bcrypt';
 import { User } from '../users/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
-import { TokenPayload } from './models/jwt-payload.model';
 import { ReqHeaders } from './models/req-headers.model';
 import extractAuthUser from '../common/helpers/get-auth-user.helper';
 
