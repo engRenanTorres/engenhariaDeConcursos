@@ -1,5 +1,6 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InstituteRepository } from './repositories/institute.repository';
+import { InstituteORM } from './orm-entities/institute.db-entity';
 
 @Injectable()
 export class Seed implements OnModuleInit {
@@ -15,12 +16,14 @@ export class Seed implements OnModuleInit {
         name: 'FGV',
         about: '00000000000',
         contact: 'adm@adm.com',
-      };
+        concursos: [],
+      } as Omit<InstituteORM, 'id'>;
       const banca2 = {
         name: 'Cesgranrio',
         about: '00000000002',
         contact: 'normal@normal.com',
-      };
+        concursos: [],
+      } as Omit<InstituteORM, 'id'>;
       await this.instituteRepository.create(banca1);
       await this.instituteRepository.create(banca2);
       return;

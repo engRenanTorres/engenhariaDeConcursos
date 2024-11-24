@@ -21,6 +21,7 @@ import { InstituteService } from '../application/services/institute.service';
 import { ConcursoService } from '../application/services/concurso.service';
 import { ConcursoController } from './controllers/concurso.controller';
 import { InstituteController } from './controllers/institute.controller';
+import { InstituteRepository } from './repositories/institute.repository';
 
 @Module({
   imports: [DatabaseModule, UsersModule],
@@ -42,6 +43,7 @@ import { InstituteController } from './controllers/institute.controller';
     LevelService,
     ...levelProviders,
     InstituteService,
+    InstituteRepository,
     ...instituteProviders,
     ConcursoService,
     ...concursoProviders,

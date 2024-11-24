@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { Concurso } from '../../domain/entities/concurso.entity';
 import { CreateConcursoDto } from '../../application/dto/create-concurso.dto';
 import { InstituteRepository } from './institute.repository';
+import { Institute } from '../../domain/entities/institute.entity';
 
 @Injectable()
 export class ConcursoRepository implements OnModuleInit {

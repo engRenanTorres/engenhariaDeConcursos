@@ -1,59 +1,26 @@
-import {
-  Inject,
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateInstituteDto } from '../dto/create-institute.dto';
 import { UpdateInstituteDto } from '../dto/update-institute.dto';
 import { InstituteORM } from '../../infrastructure/orm-entities/institute.db-entity';
-import { Repository } from 'typeorm';
+import { InstituteRepository } from '../../infrastructure/repositories/institute.repository';
 
 @Injectable()
-export class InstituteService implements OnModuleInit {
-  constructor(
-    @Inject('INSTITUTE_REPOSITORY')
-    private readonly instituteRepository: Repository<InstituteORM>,
-  ) {}
+export class InstituteService {
+  constructor(private readonly instituteRepository: InstituteRepository) {}
 
   private logger: Logger = new Logger('InstituteService');
 
-  async onModuleInit(): Promise<void> {
-    const institutes = await this.instituteRepository.find();
-    if (institutes.length === 0) {
-      this.logger.log('default institute has been created');
-      const banca1 = {
-        name: 'FGV',
-        about: '00000000000',
-        contact: 'adm@adm.com',
-      };
-      const banca2 = {
-        name: 'Cesgranrio',
-        about: '00000000002',
-        contact: 'normal@normal.com',
-      };
-      await this.create(banca1);
-      await this.create(banca2);
-      return;
-    }
-    this.logger.log(
-      'Dont need to institues. Institutes.length = ' + institutes.length,
-    );
-    return;
-  }
-
   async create(createInstituteDto: CreateInstituteDto) {
     const institute = this.instituteRepository.create(createInstituteDto);
-    return await this.instituteRepository.save(institute);
+    return institute;
   }
 
   async findAll() {
-    return await this.instituteRepository.find();
+    return await this.instituteRepository.findAll();
   }
 
   async findById(id: number): Promise<InstituteORM> {
-    const user = await this.instituteRepository.findOneBy({ id: id });
+    const user = await this.instituteRepository.findById(id);
     this.checkIfUserExiste(user, id);
     return user;
   }
