@@ -1,7 +1,7 @@
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { Role } from './entities/role.enum';
-import { User } from './entities/user.entity';
+import { User } from './entities/user.db-entity';
 
 describe('UsersController', () => {
   let service: UsersService;

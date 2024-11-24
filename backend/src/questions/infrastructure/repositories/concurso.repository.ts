@@ -1,31 +1,22 @@
-import {
-  Inject,
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
-import { CreateConcursoDto } from '../dto/create-concurso.dto';
-import { UpdateConcursoDto } from '../dto/update-concurso.dto';
-import { Concurso } from '../../infrastructure/orm-entities/concurso.db-entity';
+import { Injectable, Logger, OnModuleInit, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { InstituteService } from './institute.service';
+import { Concurso } from '../../domain/entities/concurso.entity';
+import { CreateConcursoDto } from '../../application/dto/create-concurso.dto';
+import { InstituteRepository } from './institute.repository';
 
 @Injectable()
-export class ConcursoService implements OnModuleInit {
+export class ConcursoRepository implements OnModuleInit {
+  private logger: Logger = new Logger('ConcursoService');
   constructor(
     @Inject('CONCURSO_REPOSITORY')
     private readonly concursoRepository: Repository<Concurso>,
-    private readonly instituteService: InstituteService,
+    private readonly institueRepository: InstituteRepository,
   ) {}
-
-  private logger: Logger = new Logger('ConcursoService');
-
   async onModuleInit(): Promise<void> {
     const concurso = await this.concursoRepository.find();
     if (concurso.length === 0) {
       try {
-        const institute = await this.instituteService.findById(1);
+        const institute = await this.institueRepository.findById(1);
         const conc1: CreateConcursoDto = {
           name: 'Petrobras',
           about: 'Top',
@@ -53,29 +44,8 @@ export class ConcursoService implements OnModuleInit {
     );
     return;
   }
-
   async create(createConcursoDto: CreateConcursoDto) {
     const concurso = this.concursoRepository.create(createConcursoDto);
     return await this.concursoRepository.save(concurso);
-  }
-
-  async findAll(): Promise<Concurso[]> {
-    return await this.concursoRepository.find();
-  }
-
-  async findById(id: number): Promise<Concurso> {
-    const concurso = await this.concursoRepository.findOneBy({ id: id });
-    if (!concurso) {
-      throw new NotFoundException('concurso not found with id: ' + id);
-    }
-    return concurso;
-  }
-
-  update(id: number, updateConcursoDto: UpdateConcursoDto) {
-    return `This action updates a #${id} concurso`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} concurso`;
   }
 }

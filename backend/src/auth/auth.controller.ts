@@ -10,7 +10,7 @@ import { Body, HttpCode, Req } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { SigninDTO } from '../users/dto/signin.dto';
-import { User } from '../users/entities/user.entity';
+import { User } from '../users/entities/user.db-entity';
 import {
   ApiOperation,
   ApiBearerAuth,

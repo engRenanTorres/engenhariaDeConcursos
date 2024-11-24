@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { CreateLevelDto } from '../dto/create-level.dto';
 import { UpdateLevelDto } from '../dto/update-level.dto';
-import { Level } from '../../domain/entities/level.entity';
+import { Level } from '../../infrastructure/orm-entities/level.db-entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

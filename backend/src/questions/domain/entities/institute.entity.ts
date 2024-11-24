@@ -1,16 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Concurso } from './concurso.entity';
+import { GenericEntity } from './generic.entity';
 
-@Entity('institute')
-export class Institute {
-  @PrimaryGeneratedColumn()
-  id: number;
-  @Column({ type: 'varchar', length: 50, nullable: false, unique: true })
-  name: string;
-  @Column({ nullable: true, default: null })
-  about: string;
-  @Column()
-  contact: string;
-  @OneToMany(() => Concurso, concurso => concurso.institute)
-  concursos: Concurso[];
+export class Institute extends GenericEntity {
+  constructor(
+    id: number,
+    public name: string,
+    public about: string,
+    public contact: string,
+    public concursos: Concurso[],
+  ) {
+    super(id);
+  }
 }

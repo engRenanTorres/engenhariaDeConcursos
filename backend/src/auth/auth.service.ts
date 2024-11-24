@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { compareSync } from 'bcrypt';
-import { User } from '../users/entities/user.entity';
+import { User } from '../users/entities/user.db-entity';
 import { JwtService } from '@nestjs/jwt';
 import { ReqHeaders } from './models/req-headers.model';
 import extractAuthUser from '../common/helpers/get-auth-user.helper';

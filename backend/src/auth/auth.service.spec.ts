@@ -1,6 +1,6 @@
 import { JwtService } from '@nestjs/jwt';
 import { Role } from '../users/entities/role.enum';
-import { User } from '../users/entities/user.entity';
+import { User } from '../users/entities/user.db-entity';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
 import { AuthService } from './auth.service';

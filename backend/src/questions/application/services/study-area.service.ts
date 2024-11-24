@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { CreateStudyAreaDto } from '../dto/create-study-area.dto';
 import { UpdateStudyAreaDto } from '../dto/update-study-area.dto';
-import { StudyArea } from '../../domain/entities/study-area.entity';
+import { StudyArea } from '../../infrastructure/orm-entities/study-area.db-entity';
 import { Repository } from 'typeorm';
 import { MessagesHelper } from '../../../common/helpers/message.helper';
 

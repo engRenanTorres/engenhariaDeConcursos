@@ -5,7 +5,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from '../../users/entities/user.entity';
+import { User } from '../../users/entities/user.db-entity';
 import { TokenPayload } from '../../auth/models/jwt-payload.model';
 
 const extractAuthUser = async (

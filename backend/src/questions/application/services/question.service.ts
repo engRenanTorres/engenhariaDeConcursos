@@ -2,11 +2,11 @@ import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateQuestionDto } from '../dto/create-question.dto';
 import { UpdateQuestionDto } from '../dto/update-question.dto';
-import { Question } from '../../domain/entities/question.entity';
+import { Question } from '../../infrastructure/orm-entities/question.db-entity';
 import { LevelService } from './level.service';
 import { ConcursoService } from './concurso.service';
 import { SubjectService } from './subject.service';
-import { QuestionsChoice } from '../../domain/entities/questions-choice.entity';
+import { QuestionsChoice } from '../../infrastructure/orm-entities/questions-choice.db-entity';
 import { UsersService } from '../../../users/users.service';
 import extractAuthUser from '../../../common/helpers/get-auth-user.helper';
 

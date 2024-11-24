@@ -19,6 +19,8 @@ import { LevelService } from '../application/services/level.service';
 import { LevelController } from './controllers/level.controller';
 import { InstituteService } from '../application/services/institute.service';
 import { ConcursoService } from '../application/services/concurso.service';
+import { ConcursoController } from './controllers/concurso.controller';
+import { InstituteController } from './controllers/institute.controller';
 
 @Module({
   imports: [DatabaseModule, UsersModule],
@@ -27,6 +29,8 @@ import { ConcursoService } from '../application/services/concurso.service';
     SubjectController,
     StudyAreaController,
     LevelController,
+    ConcursoController,
+    InstituteController,
   ],
   providers: [
     QuestionService,

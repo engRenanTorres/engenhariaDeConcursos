@@ -6,10 +6,10 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { QuestionsChoice } from './questions-choice.entity';
-import { Concurso } from './concurso.entity';
-import { Level } from './level.entity';
-import { Subject } from './subject.entity';
+import { QuestionsChoice } from './questions-choice.db-entity';
+import { Concurso } from './concurso.db-entity';
+import { Level } from './level.db-entity';
+import { Subject } from './subject.db-entity';
 import { User } from '../../../users/entities/user.db-entity';
 
 export enum Answer {

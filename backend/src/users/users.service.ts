@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import { User } from './entities/user.entity';
+import { User } from './entities/user.db-entity';
 import { CreateSpecialUserDto, CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto/update-user.dto';
 import { Repository } from 'typeorm';

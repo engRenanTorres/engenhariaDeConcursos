@@ -7,14 +7,14 @@ import {
 } from '@nestjs/common';
 import { CreateInstituteDto } from '../dto/create-institute.dto';
 import { UpdateInstituteDto } from '../dto/update-institute.dto';
-import { Institute } from '../../domain/entities/institute.entity';
+import { InstituteORM } from '../../infrastructure/orm-entities/institute.db-entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class InstituteService implements OnModuleInit {
   constructor(
     @Inject('INSTITUTE_REPOSITORY')
-    private readonly instituteRepository: Repository<Institute>,
+    private readonly instituteRepository: Repository<InstituteORM>,
   ) {}
 
   private logger: Logger = new Logger('InstituteService');
@@ -52,7 +52,7 @@ export class InstituteService implements OnModuleInit {
     return await this.instituteRepository.find();
   }
 
-  async findById(id: number): Promise<Institute> {
+  async findById(id: number): Promise<InstituteORM> {
     const user = await this.instituteRepository.findOneBy({ id: id });
     this.checkIfUserExiste(user, id);
     return user;
