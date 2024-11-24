@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Question } from './question.db-entity';
 
 @Entity('levels')
-export class Level {
+export class LevelDbEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ type: 'varchar', length: 50, nullable: false, unique: true })

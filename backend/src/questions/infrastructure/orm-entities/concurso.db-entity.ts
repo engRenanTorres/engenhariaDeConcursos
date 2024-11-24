@@ -6,7 +6,7 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { InstituteORM } from './institute.db-entity';
+import { InstituteDb } from './institute.db-entity';
 import { Question } from './question.db-entity';
 
 @Entity('concurso')
@@ -19,10 +19,10 @@ export class Concurso {
   about: string;
   @Column({ type: 'int', nullable: true, default: null })
   year: number;
-  @ManyToOne(() => InstituteORM, institute => institute.concursos, {
+  @ManyToOne(() => InstituteDb, institute => institute.concursos, {
     eager: true,
   })
-  institute: InstituteORM;
+  institute: InstituteDb;
   @OneToMany(() => Question, question => question.concurso)
   questions: Question[];
 

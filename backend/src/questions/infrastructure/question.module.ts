@@ -22,6 +22,7 @@ import { ConcursoService } from '../application/services/concurso.service';
 import { ConcursoController } from './controllers/concurso.controller';
 import { InstituteController } from './controllers/institute.controller';
 import { InstituteRepository } from './repositories/institute.repository';
+import { LevelRepository } from './repositories/level.repository';
 
 @Module({
   imports: [DatabaseModule, UsersModule],
@@ -41,6 +42,7 @@ import { InstituteRepository } from './repositories/institute.repository';
     StudyAreaService,
     ...studyAreaProviders,
     LevelService,
+    LevelRepository,
     ...levelProviders,
     InstituteService,
     InstituteRepository,

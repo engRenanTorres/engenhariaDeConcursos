@@ -1,70 +1,37 @@
-import {
-  Inject,
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateLevelDto } from '../dto/create-level.dto';
 import { UpdateLevelDto } from '../dto/update-level.dto';
-import { Level } from '../../infrastructure/orm-entities/level.db-entity';
-import { Repository } from 'typeorm';
+import { LevelRepository } from '../../infrastructure/repositories/level.repository';
+import { Level } from '../../domain/entities/level.entity';
 
 @Injectable()
-export class LevelService implements OnModuleInit {
-  constructor(
-    @Inject('LEVEL_REPOSITORY')
-    private readonly levelRepository: Repository<Level>,
-  ) {}
+export class LevelService {
+  constructor(private readonly levelRepository: LevelRepository) {}
 
   private logger: Logger = new Logger('LevelService');
 
-  async onModuleInit(): Promise<void> {
-    const levels = await this.levelRepository.find();
-    if (levels.length === 0) {
-      this.logger.log('default level has been created');
-      const level1 = {
-        name: 'Superior',
-        about: '00000000000',
-      };
-      const level2 = {
-        name: 'Técnico',
-        about: '00000000002',
-      };
-      await this.create(level1);
-      await this.create(level2);
-      return;
-    }
-    this.logger.log(
-      'Dont need to create default levels. levels.length = ' + levels.length,
-    );
-    return;
-  }
-
   async create(createLevelDto: CreateLevelDto): Promise<Level> {
     const sup = this.levelRepository.create(createLevelDto);
-    return await this.levelRepository.save(sup);
+    return sup;
   }
 
   async findAll(): Promise<Level[]> {
-    return this.levelRepository.find();
+    return this.levelRepository.findAll();
   }
 
   async findById(id: number): Promise<Level> {
-    const level = await this.levelRepository.findOneBy({ id: id });
+    const level = await this.levelRepository.findById(id);
     if (!level) {
       throw new NotFoundException('concurso not found with id: ' + id);
     }
     return level;
   }
 
-  update(id: number, updateLevelDto: UpdateLevelDto) {
-    // TODO: update level
-    return `This action updates a #${id} level`;
+  async update(id: number, updateLevelDto: UpdateLevelDto) {
+    return await this.levelRepository.update(id, updateLevelDto);
   }
 
-  remove(id: number) {
-    // TODO: delete level
-    return `This action removes a #${id} level`;
+  async remove(id: number): Promise<Level> {
+    return await this.remove(id);
   }
 }

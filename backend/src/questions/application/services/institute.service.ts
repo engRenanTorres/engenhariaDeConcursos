@@ -1,7 +1,7 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateInstituteDto } from '../dto/create-institute.dto';
 import { UpdateInstituteDto } from '../dto/update-institute.dto';
-import { InstituteORM } from '../../infrastructure/orm-entities/institute.db-entity';
+import { InstituteDb } from '../../infrastructure/orm-entities/institute.db-entity';
 import { InstituteRepository } from '../../infrastructure/repositories/institute.repository';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class InstituteService {
     return await this.instituteRepository.findAll();
   }
 
-  async findById(id: number): Promise<InstituteORM> {
+  async findById(id: number): Promise<InstituteDb> {
     const user = await this.instituteRepository.findById(id);
     this.checkIfUserExiste(user, id);
     return user;

@@ -12,7 +12,7 @@ export class GenericRepository<
     private readonly entityName: string,
   ) {}
 
-  private logger: Logger = new Logger(`${this.entityName}Repository`);
+  protected logger: Logger = new Logger(`${this.entityName}Repository`);
 
   async create(createDto: DeepPartial<T>): Promise<E> {
     const entity = this.repositoryOrm.create(createDto as T);
@@ -40,15 +40,17 @@ export class GenericRepository<
       ...updateDto,
     } as DeepPartial<T>);
     this.checkIfExist(entity, id);
-    return this.repositoryOrm.save(entity);
+    const updated = this.repositoryOrm.save(entity);
+    return this.parseToDomainEntity<E>(updated);
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<E> {
     const entity = await this.repositoryOrm.findOne({
       where: { id } as FindOptionsWhere<T>,
     });
     this.checkIfExist(entity, id);
-    return this.repositoryOrm.remove(entity);
+    const deleted = this.repositoryOrm.remove(entity);
+    return this.parseToDomainEntity(deleted);
   }
 
   private checkIfExist(entity: T, id: number) {

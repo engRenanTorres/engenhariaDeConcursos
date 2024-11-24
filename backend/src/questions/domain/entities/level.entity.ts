@@ -1,10 +1,9 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { Question } from './question.entity';
+import { GenericEntity } from './generic.entity';
 
 @Entity('levels')
-export class Level {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Level extends GenericEntity {
   @Column({ type: 'varchar', length: 50, nullable: false, unique: true })
   name: string;
   @Column({ nullable: true, default: null })

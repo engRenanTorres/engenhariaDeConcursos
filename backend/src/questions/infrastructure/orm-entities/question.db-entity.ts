@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { QuestionsChoice } from './questions-choice.db-entity';
 import { Concurso } from './concurso.db-entity';
-import { Level } from './level.db-entity';
+import { LevelDbEntity } from './level.db-entity';
 import { Subject } from './subject.db-entity';
 import { User } from '../../../users/entities/user.db-entity';
 
@@ -32,8 +32,8 @@ export class Question {
   answer: Answer;
   @Column({ type: 'text', nullable: true, default: null })
   tip: string;
-  @ManyToOne(() => Level, level => level.questions, { eager: true })
-  level: Level;
+  @ManyToOne(() => LevelDbEntity, level => level.questions, { eager: true })
+  level: LevelDbEntity;
   @ManyToOne(() => Subject, subject => subject.questions, { eager: true })
   subject: Subject;
   @OneToMany(() => QuestionsChoice, choices => choices.question, {
@@ -56,7 +56,7 @@ export class Question {
     question?: string,
     answer?: Answer,
     tip?: string,
-    level?: Level,
+    level?: LevelDbEntity,
     subject?: Subject,
     questionsChoices?: QuestionsChoice[],
     concurso?: Concurso,
