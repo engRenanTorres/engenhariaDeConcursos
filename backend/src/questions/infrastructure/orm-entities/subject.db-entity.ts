@@ -1,5 +1,5 @@
 import { Question } from './question.db-entity';
-import { StudyArea } from './study-area.db-entity';
+import { StudyAreaDb } from './study-area.db-entity';
 import {
   Column,
   Entity,
@@ -16,8 +16,8 @@ export class Subject {
   name: string;
   @Column({ type: 'text', nullable: false })
   about: string;
-  @ManyToOne(() => StudyArea, study => study.subjects, { eager: true })
-  area: StudyArea;
+  @ManyToOne(() => StudyAreaDb, study => study.subjects, { eager: true })
+  area: StudyAreaDb;
   @OneToMany(() => Question, question => question.subject)
   questions: Question[];
 }

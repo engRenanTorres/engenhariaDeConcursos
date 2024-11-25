@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { Question } from '../infrastructure/orm-entities/question.db-entity';
 import { Subject } from '../infrastructure/orm-entities/subject.db-entity';
-import { StudyArea } from '../infrastructure/orm-entities/study-area.db-entity';
+import { StudyAreaDb } from '../infrastructure/orm-entities/study-area.db-entity';
 import { LevelDbEntity } from '../infrastructure/orm-entities/level.db-entity';
 import { InstituteDb } from '../infrastructure/orm-entities/institute.db-entity';
 import { Concurso } from '../infrastructure/orm-entities/concurso.db-entity';
@@ -25,7 +25,8 @@ export const subjectProviders = [
 export const studyAreaProviders = [
   {
     provide: 'STUDY_AREA_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(StudyArea),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(StudyAreaDb),
     inject: ['DATA_SOURCE'],
   },
 ];
@@ -33,7 +34,8 @@ export const studyAreaProviders = [
 export const levelProviders = [
   {
     provide: 'LEVEL_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(LevelDbEntity),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(LevelDbEntity),
     inject: ['DATA_SOURCE'],
   },
 ];

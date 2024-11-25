@@ -1,10 +1,9 @@
+import { GenericEntity } from './generic.entity';
 import { Subject } from './subject.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity('study-areas')
-export class StudyArea {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class StudyArea extends GenericEntity {
   @Column({ unique: true })
   name: string;
   @Column()

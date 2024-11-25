@@ -20,15 +20,16 @@ export class GenericRepository<
     return this.parseToDomainEntity<E>(result);
   }
 
-  async findAll(): Promise<E[]> {
-    const all = await this.repositoryOrm.find();
+  async findAll(relations?: string[]): Promise<E[]> {
+    const all = await this.repositoryOrm.find({ relations });
     const allEntities = all.map(e => this.parseToDomainEntity<E>(e));
     return allEntities;
   }
 
-  async findById(id: number): Promise<E> {
+  async findById(id: number, relations?: string[]): Promise<E> {
     const entity = await this.repositoryOrm.findOne({
       where: [{ id } as FindOptionsWhere<T>],
+      relations,
     });
     this.checkIfExist(entity, id);
     return this.parseToDomainEntity<E>(entity);

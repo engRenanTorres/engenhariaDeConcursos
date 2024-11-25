@@ -1,12 +1,15 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateInstituteDto } from '../dto/create-institute.dto';
 import { UpdateInstituteDto } from '../dto/update-institute.dto';
 import { InstituteDb } from '../../infrastructure/orm-entities/institute.db-entity';
-import { InstituteRepository } from '../../infrastructure/repositories/institute.repository';
+import { InstituteRepositoryInterface } from '../repositories/institute-interface.repository';
 
 @Injectable()
 export class InstituteService {
-  constructor(private readonly instituteRepository: InstituteRepository) {}
+  constructor(
+    @Inject('INSTITUTE_REPO')
+    private readonly instituteRepository: InstituteRepositoryInterface,
+  ) {}
 
   private logger: Logger = new Logger('InstituteService');
 

@@ -23,6 +23,7 @@ import { ConcursoController } from './controllers/concurso.controller';
 import { InstituteController } from './controllers/institute.controller';
 import { InstituteRepository } from './repositories/institute.repository';
 import { LevelRepository } from './repositories/level.repository';
+import { StudyAreaRepository } from './repositories/study-area.repository';
 
 @Module({
   imports: [DatabaseModule, UsersModule],
@@ -40,12 +41,13 @@ import { LevelRepository } from './repositories/level.repository';
     SubjectService,
     ...subjectProviders,
     StudyAreaService,
+    StudyAreaRepository,
     ...studyAreaProviders,
     LevelService,
     LevelRepository,
     ...levelProviders,
     InstituteService,
-    InstituteRepository,
+    { provide: 'INSTITUTE_REPO', useClass: InstituteRepository },
     ...instituteProviders,
     ConcursoService,
     ...concursoProviders,
